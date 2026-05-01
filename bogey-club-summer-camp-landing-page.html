@@ -1865,7 +1865,7 @@
 
 <script>
 (function(){
-  var LEAD_WEBHOOK_URL = '';
+  var LEAD_WEBHOOK_URL = '/wp-json/bogey/v1/lead';
   var modal = document.getElementById('tbc-lead-modal');
   var closeBtn = document.getElementById('tbc-lead-close');
   var form = document.getElementById('tbc-lead-form');
@@ -1959,7 +1959,7 @@
       }
 
       function finishFailure() {
-        alert('Your form needs a real webhook or WordPress endpoint before submissions can be received. Add that URL in LEAD_WEBHOOK_URL.');
+        alert('Sorry — something went wrong sending your info. Please call us at (905) 235-4653 or email golf@thebogeyclub.com.');
       }
 
       function resetButton() {
