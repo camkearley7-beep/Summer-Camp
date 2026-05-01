@@ -1128,189 +1128,140 @@
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: rgba(15, 42, 29, 0.44);
+  background: rgba(15, 42, 29, 0.5);
   backdrop-filter: blur(6px);
   z-index: 9999;
+  opacity: 0;
+  transition: opacity .22s ease;
 }
 .tbc-lead-modal.show {
   display: flex;
+  opacity: 1;
 }
 .tbc-lead-dialog {
-  width: min(100%, 600px);
+  width: min(100%, 440px);
   background: #ffffff;
-  border-radius: 26px;
-  padding: 0;
-  box-shadow: 0 22px 52px rgba(15, 42, 29, 0.14);
+  border-radius: var(--tbc-radius);
+  padding: 36px 32px 32px;
+  box-shadow: var(--tbc-shadow-lg);
   position: relative;
-  border: 1px solid rgba(15, 42, 29, 0.1);
-  overflow: hidden;
+  border: 1px solid rgba(15, 42, 29, 0.08);
+  transform: translateY(8px) scale(0.98);
+  transition: transform .22s ease;
+}
+.tbc-lead-modal.show .tbc-lead-dialog {
+  transform: translateY(0) scale(1);
 }
 .tbc-lead-close {
   position: absolute;
   top: 14px;
   right: 14px;
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   border: 0;
   border-radius: 999px;
-  background: #f5f8f4;
-  color: var(--tbc-ink);
-  font-size: 1rem;
-  font-weight: 700;
+  background: transparent;
+  color: var(--tbc-ink-soft);
+  font-size: 1.4rem;
+  font-weight: 400;
   cursor: pointer;
-  z-index: 2;
-  box-shadow: 0 6px 16px rgba(15, 42, 29, 0.08);
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s ease, color .15s ease;
 }
-.tbc-lead-top {
-  padding: 28px 30px 18px;
-  background:
-    radial-gradient(180px 120px at 92% 8%, rgba(251, 191, 36, 0.18), transparent 70%),
-    linear-gradient(180deg, #ffffff 0%, #fbfdfb 100%);
-  display: block;
-}
-.tbc-lead-top-copy {
-  min-width: 0;
+.tbc-lead-close:hover {
+  background: var(--tbc-mint);
+  color: var(--tbc-green-deep);
 }
 .tbc-lead-kicker {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 7px 14px;
+  padding: 6px 12px;
   border-radius: 999px;
-  background: #dff7e6;
+  background: var(--tbc-mint);
   color: var(--tbc-green-deep);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 14px;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
 }
 .tbc-lead-dialog h3 {
-  margin-bottom: 10px;
-  font-size: clamp(1.8rem, 3vw, 2.35rem);
-  line-height: 1.04;
-  max-width: 10ch;
+  margin: 0 0 6px;
+  font-size: clamp(1.5rem, 2.6vw, 1.8rem);
+  line-height: 1.1;
 }
-.tbc-lead-dialog p {
+.tbc-lead-dialog .tbc-lead-sub {
   color: var(--tbc-ink-soft);
-  margin-bottom: 0;
-  font-size: 0.94rem;
+  margin: 0 0 22px;
+  font-size: 0.95rem;
   line-height: 1.5;
-  max-width: 48ch;
 }
 .tbc-lead-week {
-  color: var(--tbc-ink);
+  color: var(--tbc-green-deep);
   font-weight: 700;
 }
 .tbc-lead-form {
   display: grid;
-  gap: 16px;
-  background: #ffffff;
-  border-top: 1px solid rgba(15, 42, 29, 0.08);
-  padding: 22px 30px 28px;
-}
-.tbc-lead-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 14px;
 }
 .tbc-lead-field label {
   display: block;
   font-size: 0.78rem;
   font-weight: 700;
-  margin-bottom: 7px;
-  color: #21352a;
+  margin-bottom: 6px;
+  color: var(--tbc-ink);
+  letter-spacing: 0.01em;
 }
 .tbc-lead-field input,
-.tbc-lead-field select,
-.tbc-lead-field textarea {
+.tbc-lead-field select {
   width: 100%;
-  padding: 11px 13px;
-  border-radius: 11px;
-  border: 1px solid #d9ddd8;
-  font-size: 0.92rem;
+  padding: 13px 14px;
+  border-radius: 12px;
+  border: 1.5px solid #e5ebe6;
+  font-size: 0.95rem;
   font-family: inherit;
   background: #fff;
-  box-shadow: none;
+  color: var(--tbc-ink);
+  transition: border-color .15s ease, box-shadow .15s ease;
 }
-.tbc-lead-field textarea {
-  min-height: 78px;
-  resize: vertical;
-}
-.tbc-lead-divider {
-  height: 1px;
-  background: rgba(15, 42, 29, 0.1);
-  margin: 2px 0;
-}
-.tbc-lead-submit {
-  display: block;
-  padding-top: 4px;
+.tbc-lead-field input::placeholder {
+  color: #9aa8a0;
 }
 .tbc-lead-field input:focus,
-.tbc-lead-field select:focus,
-.tbc-lead-field textarea:focus {
+.tbc-lead-field select:focus {
   outline: none;
   border-color: var(--tbc-green);
-  box-shadow: 0 0 0 3px rgba(31, 122, 72, 0.1);
+  box-shadow: 0 0 0 3px rgba(31, 122, 72, 0.12);
+}
+.tbc-lead-submit {
+  margin-top: 6px;
+}
+.tbc-lead-submit .tbc-btn {
+  width: 100%;
+  min-height: 52px;
 }
 .tbc-lead-meta {
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   color: var(--tbc-ink-soft);
   text-align: center;
-  margin: 12px auto 0;
-  max-width: 42ch;
+  margin: 12px 0 0;
 }
 .tbc-lead-success {
   display: none;
-  margin: 0 30px 24px;
+  margin-top: 16px;
   padding: 14px 16px;
   border-radius: 14px;
   background: var(--tbc-mint);
   color: var(--tbc-green-deep);
   font-weight: 600;
   text-align: center;
+  font-size: 0.92rem;
 }
 .tbc-lead-success.show {
   display: block;
-}
-.tbc-lead-summary {
-  border: 1px solid rgba(15, 42, 29, 0.12);
-  border-radius: 14px;
-  overflow: hidden;
-  background: #fff;
-  margin-top: 2px;
-}
-.tbc-lead-summary-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  padding: 12px 16px;
-  border-top: 1px solid rgba(15, 42, 29, 0.08);
-  font-size: 0.86rem;
-}
-.tbc-lead-summary-row:first-child {
-  border-top: 0;
-}
-.tbc-lead-summary-row strong {
-  color: #101914;
-  font-weight: 700;
-}
-.tbc-lead-summary-row span:last-child {
-  font-weight: 600;
-  color: #101914;
-  text-align: right;
-}
-.tbc-lead-summary-row.is-total {
-  background: #fbfcfb;
-}
-.tbc-lead-summary-row.is-total strong,
-.tbc-lead-summary-row.is-total span:last-child {
-  font-size: 1rem;
-}
-.tbc-lead-submit .tbc-btn {
-  width: 100%;
-  min-height: 52px;
 }
 
 .tbc-faq { padding: 96px 0; background: #fff; }
@@ -1489,13 +1440,7 @@
     gap: 8px;
   }
   .tbc-day-item .emoji { display: inline-flex; }
-  .tbc-lead-row { grid-template-columns: 1fr; }
-  .tbc-lead-top { padding: 22px 20px 16px; }
-  .tbc-lead-form { padding: 18px 20px 24px; }
-  .tbc-lead-dialog { width: min(100%, 620px); }
-  .tbc-lead-submit .tbc-btn { width: 100%; }
-  .tbc-lead-meta { text-align: center; }
-  .tbc-lead-success { margin: 0 20px 24px; }
+  .tbc-lead-dialog { padding: 28px 22px 24px; }
   .tbc-final .ctas { flex-direction: column; align-items: stretch; }
 }
 
@@ -1883,95 +1828,38 @@
 <div class="tbc-lead-modal" id="tbc-lead-modal" aria-hidden="true">
   <div class="tbc-lead-dialog" role="dialog" aria-modal="true" aria-labelledby="tbc-lead-title">
     <button class="tbc-lead-close" type="button" id="tbc-lead-close" aria-label="Close">×</button>
-    <div class="tbc-lead-top">
-      <div class="tbc-lead-top-copy">
-        <span class="tbc-lead-kicker">Get More Information</span>
-        <h3 id="tbc-lead-title">Tell us which week you're interested in</h3>
-        <p>Fill this out and we'll reach out with more details about <strong class="tbc-lead-week" id="tbc-lead-week-label">your selected week</strong>.</p>
-      </div>
-    </div>
+    <span class="tbc-lead-kicker" id="tbc-lead-week-label">Your selected week</span>
+    <h3 id="tbc-lead-title">Get camp details</h3>
+    <p class="tbc-lead-sub">Drop your info and we'll be in touch within 24 hours.</p>
 
     <form id="tbc-lead-form" class="tbc-lead-form" novalidate>
       <input type="hidden" name="preferred_week" id="tbc-lead-week-input" value="" />
-      <div class="tbc-lead-row">
-        <div class="tbc-lead-field">
-          <label for="tbc-lead-parent">Parent First Name *</label>
-          <input type="text" id="tbc-lead-parent" name="parent_name" required autocomplete="given-name" placeholder="Jane" />
-        </div>
-        <div class="tbc-lead-field">
-          <label for="tbc-lead-parent-last">Parent Last Name</label>
-          <input type="text" id="tbc-lead-parent-last" name="parent_last_name" autocomplete="family-name" placeholder="Smith" />
-        </div>
-      </div>
-      <div class="tbc-lead-row">
-        <div class="tbc-lead-field">
-          <label for="tbc-lead-email">Email Address *</label>
-          <input type="email" id="tbc-lead-email" name="email" required autocomplete="email" placeholder="jane@email.com" />
-        </div>
-        <div class="tbc-lead-field">
-          <label for="tbc-lead-phone">Phone Number *</label>
-          <input type="tel" id="tbc-lead-phone" name="phone" required autocomplete="tel" placeholder="(905) 555-0123" />
-        </div>
-      </div>
-      <div class="tbc-lead-divider"></div>
-      <div class="tbc-lead-row">
-        <div class="tbc-lead-field">
-          <label for="tbc-lead-camper">Camper First Name</label>
-          <input type="text" id="tbc-lead-camper" name="camper_name" placeholder="Alex" />
-        </div>
-        <div class="tbc-lead-field">
-          <label for="tbc-lead-age">Camper Age *</label>
-          <select id="tbc-lead-age" name="child_age" required>
-            <option value="">Select age</option>
-            <option>8</option><option>9</option><option>10</option>
-            <option>11</option><option>12</option><option>13</option>
-            <option>14</option><option>15</option>
-          </select>
-        </div>
+      <div class="tbc-lead-field">
+        <label for="tbc-lead-parent">Your name</label>
+        <input type="text" id="tbc-lead-parent" name="parent_name" required autocomplete="name" placeholder="Jane Smith" />
       </div>
       <div class="tbc-lead-field">
-        <label for="tbc-lead-week-display">Select Your Week *</label>
-        <select id="tbc-lead-week-display" name="preferred_week_display" required>
-          <option value="">Choose a week</option>
-          <option>Week 1 - July 6-10</option>
-          <option>Week 2 - July 13-17</option>
-          <option>Week 3 - July 20-24</option>
-          <option>Week 4 - July 27-31</option>
-          <option>Week 5 - Aug 10-14</option>
-          <option>Week 6 - Aug 17-21</option>
-          <option>Week 7 - Aug 24-28</option>
-        </select>
+        <label for="tbc-lead-email">Email</label>
+        <input type="email" id="tbc-lead-email" name="email" required autocomplete="email" placeholder="jane@email.com" />
       </div>
       <div class="tbc-lead-field">
-        <label for="tbc-lead-golf">Has your child played golf before?</label>
-        <select id="tbc-lead-golf" name="golf_experience">
-          <option value="">Select one</option>
-          <option>No, brand new</option>
-          <option>A little bit</option>
-          <option>Yes, regularly</option>
-        </select>
+        <label for="tbc-lead-phone">Phone</label>
+        <input type="tel" id="tbc-lead-phone" name="phone" required autocomplete="tel" placeholder="(905) 555-0123" />
       </div>
-      <div class="tbc-lead-divider"></div>
-      <div class="tbc-lead-summary" aria-label="What happens next">
-        <div class="tbc-lead-summary-row">
-          <strong>Selected Week</strong>
-          <span id="tbc-lead-summary-week">Choose a week</span>
-        </div>
-        <div class="tbc-lead-summary-row">
-          <strong>Deposit To Hold Spot</strong>
-          <span>$150.00</span>
-        </div>
-        <div class="tbc-lead-summary-row is-total">
-          <strong>Next Step</strong>
-          <span>We’ll reach out within 24 hours</span>
-        </div>
+      <div class="tbc-lead-field">
+        <label for="tbc-lead-age">Camper age</label>
+        <select id="tbc-lead-age" name="child_age" required>
+          <option value="">Select age</option>
+          <option>8</option><option>9</option><option>10</option>
+          <option>11</option><option>12</option><option>13</option>
+          <option>14</option><option>15</option>
+        </select>
       </div>
       <div class="tbc-lead-submit">
-        <button type="submit" class="tbc-btn tbc-btn-primary tbc-btn-lg">Get Camp Details</button>
-        <p class="tbc-lead-meta">Deposit secures your spot. Sibling and multi-week discount questions are always welcome.</p>
+        <button type="submit" class="tbc-btn tbc-btn-primary tbc-btn-lg">Send My Info</button>
       </div>
     </form>
-    <div class="tbc-lead-success" id="tbc-lead-success">Thanks! Your request has been sent and we'll follow up soon.</div>
+    <div class="tbc-lead-success" id="tbc-lead-success">Thanks! We'll be in touch soon.</div>
   </div>
 </div>
 
@@ -1984,15 +1872,11 @@
   var success = document.getElementById('tbc-lead-success');
   var weekInput = document.getElementById('tbc-lead-week-input');
   var weekLabel = document.getElementById('tbc-lead-week-label');
-  var weekSummary = document.getElementById('tbc-lead-summary-week');
-  var weekDisplay = document.getElementById('tbc-lead-week-display');
 
   function openModal(weekLabelText) {
     if (!modal || !form) return;
     weekInput.value = weekLabelText;
     weekLabel.textContent = weekLabelText;
-    if (weekSummary) weekSummary.textContent = weekLabelText;
-    if (weekDisplay) weekDisplay.value = weekLabelText;
     modal.classList.add('show');
     modal.setAttribute('aria-hidden', 'false');
     success.classList.remove('show');
@@ -2032,14 +1916,6 @@
   });
 
   if (form) {
-    if (weekDisplay) {
-      weekDisplay.addEventListener('change', function(){
-        weekInput.value = weekDisplay.value;
-        weekLabel.textContent = weekDisplay.value || 'your selected week';
-        if (weekSummary) weekSummary.textContent = weekDisplay.value || 'Choose a week';
-      });
-    }
-
     form.addEventListener('submit', function(e){
       e.preventDefault();
 
@@ -2060,9 +1936,6 @@
         phone: phone,
         child_age: age,
         preferred_week: week,
-        parent_last_name: form.parent_last_name ? form.parent_last_name.value.trim() : '',
-        camper_name: form.camper_name ? form.camper_name.value.trim() : '',
-        golf_experience: form.golf_experience ? form.golf_experience.value : '',
         source: 'summer-camp-week-interest',
         submitted_at: new Date().toISOString()
       };
@@ -2076,8 +1949,6 @@
         form.reset();
         weekInput.value = week;
         weekLabel.textContent = week;
-        if (weekSummary) weekSummary.textContent = week;
-        if (weekDisplay) weekDisplay.value = week;
         form.style.display = 'none';
         success.classList.add('show');
         setTimeout(function(){
