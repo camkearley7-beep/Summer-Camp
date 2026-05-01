@@ -1865,7 +1865,16 @@
 
 <script>
 (function(){
-  var LEAD_WEBHOOK_URL = '/wp-json/bogey/v1/lead';
+  // ============================================================
+  // EMAIL SETUP — paste your Web3Forms access key below.
+  // Get one free in 30 seconds:
+  //   1. Go to https://web3forms.com/
+  //   2. Enter golf@thebogeyclub.com → "Create Access Key"
+  //   3. Confirm the email Web3Forms sends you
+  //   4. Replace PASTE_YOUR_ACCESS_KEY_HERE below with the key
+  // ============================================================
+  var WEB3FORMS_ACCESS_KEY = 'PASTE_YOUR_ACCESS_KEY_HERE';
+  var LEAD_WEBHOOK_URL = 'https://api.web3forms.com/submit';
   var modal = document.getElementById('tbc-lead-modal');
   var closeBtn = document.getElementById('tbc-lead-close');
   var form = document.getElementById('tbc-lead-form');
@@ -1931,13 +1940,16 @@
       }
 
       var payload = {
-        parent_name: parent,
-        email: email,
-        phone: phone,
-        child_age: age,
-        preferred_week: week,
-        source: 'summer-camp-week-interest',
-        submitted_at: new Date().toISOString()
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: 'New Camp Inquiry: ' + week,
+        from_name: 'Bogey Club Camp Form',
+        replyto: email,
+        'Parent Name': parent,
+        'Email': email,
+        'Phone': phone,
+        'Camper Age': age,
+        'Preferred Week': week,
+        'Submitted': new Date().toLocaleString()
       };
 
       var submitBtn = form.querySelector('button[type="submit"]');
@@ -1967,20 +1979,24 @@
         submitBtn.innerHTML = originalText;
       }
 
-      if (!LEAD_WEBHOOK_URL) {
+      if (!WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY === 'PASTE_YOUR_ACCESS_KEY_HERE') {
         resetButton();
-        finishFailure();
+        alert('Form is not set up yet — the Web3Forms access key has not been added to the page. Please contact the site owner.');
         return;
       }
 
       fetch(LEAD_WEBHOOK_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(payload)
       })
-      .then(function(resp){
-        if (!resp.ok) throw new Error('Request failed');
-        finishSuccess();
+      .then(function(resp){ return resp.json(); })
+      .then(function(data){
+        if (data && data.success) {
+          finishSuccess();
+        } else {
+          finishFailure();
+        }
       })
       .catch(function(){
         finishFailure();
