@@ -1131,6 +1131,14 @@
   background: rgba(15, 42, 29, 0.44);
   backdrop-filter: blur(6px);
   z-index: 9999;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color: #0f2a1d;
+  line-height: 1.55;
+}
+.tbc-lead-modal *,
+.tbc-lead-modal *::before,
+.tbc-lead-modal *::after {
+  box-sizing: border-box;
 }
 .tbc-lead-modal.show {
   display: flex;
@@ -1152,7 +1160,8 @@
   height: 28px;
   border: 0;
   background: transparent;
-  color: var(--tbc-ink);
+  color: #0f2a1d;
+  font-family: inherit;
   font-size: 1.4rem;
   line-height: 1;
   cursor: pointer;
@@ -1170,8 +1179,9 @@
   display: inline-block;
   padding: 6px 12px;
   border-radius: 999px;
-  background: var(--tbc-mint);
-  color: var(--tbc-green-deep);
+  background: #dcfce7;
+  color: #14532d;
+  font-family: inherit;
   font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -1180,19 +1190,22 @@
 }
 .tbc-lead-dialog h3 {
   margin: 0 0 10px;
-  font-size: clamp(1.5rem, 2.4vw, 1.9rem);
-  line-height: 1.1;
-  color: var(--tbc-ink);
-  font-weight: 800;
+  font-family: 'Fredoka', 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: clamp(1.6rem, 2.4vw, 2rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: #0f2a1d;
+  font-weight: 700;
 }
 .tbc-lead-dialog p {
-  color: var(--tbc-ink-soft);
+  color: #3b5a49;
   margin: 0;
   font-size: 0.95rem;
   line-height: 1.5;
 }
 .tbc-lead-form-embed {
   padding: 18px 28px 26px;
+  font-family: inherit;
 }
 .tbc-lead-form-embed .wpforms-container {
   margin: 0;
